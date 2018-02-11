@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<wsdl:definitions name="GcdSoapApi"
+                  targetNamespace="http://soapapi.service.com/soap"
+                  xmlns:tns="http://soapapi.service.com/soap" xmlns:types="http://soapapi.service.com/soap/types/gcd"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://soapapi.service.com/soap/types/gcd"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+                    attributeFormDefault="unqualified" version="1.0">
+
+            <xsd:element name="GcdRequest" type="xsd:string" />
+
+            <xsd:element name="GcdResponse" type="xsd:int" />
+
+            <xsd:element name="GcdListRequest" type="xsd:string" />
+
+            <xsd:element name="GcdListResponse">
+                <xsd:complexType>
+                    <xsd:sequence maxOccurs="unbounded">
+                        <xsd:element name="gsdList" type="xsd:int" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="GcdSumRequest" type="xsd:string" />
+
+            <xsd:element name="GcdSumResponse" type="xsd:int" />
+
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GcdInput">
+        <wsdl:part name="gcd" element="types:GcdRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="GcdOutput">
+        <wsdl:part name="gcd" element="types:GcdResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="GcdListInput">
+        <wsdl:part name="gcdList" element="types:GcdListRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="GcdListOutput">
+        <wsdl:part name="gcdList" element="types:GcdListResponse" />
+    </wsdl:message>
+
+    <wsdl:message name="GcdSumInput">
+        <wsdl:part name="gcdSum" element="types:GcdSumRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="GcdSumOutput">
+        <wsdl:part name="gcdSum" element="types:GcdSumResponse" />
+    </wsdl:message>
+
+
+    <wsdl:portType name="Gcd_PortType">
+        <wsdl:operation name="gcd">
+            <wsdl:input message="tns:GcdInput" />
+            <wsdl:output message="tns:GcdOutput" />
+        </wsdl:operation>
+        <wsdl:operation name="gcdList">
+            <wsdl:input message="tns:GcdListInput" />
+            <wsdl:output message="tns:GcdListOutput" />
+        </wsdl:operation>
+        <wsdl:operation name="gcdSum">
+            <wsdl:input message="tns:GcdSumInput" />
+            <wsdl:output message="tns:GcdSumOutput" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="Gcd_SoapBinding" type="tns:Gcd_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="gcd">
+            <soap:operation
+                    soapAction="http://soapapi.service.com/soap/gcd" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="gcdList">
+            <soap:operation
+                    soapAction="http://soapapi.service.com/soap/gcdList" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="gcdSum">
+            <soap:operation
+                    soapAction="http://soapapi.service.com/soap/gcdSum" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="Gcd_Service">
+        <wsdl:documentation>GCD service</wsdl:documentation>
+        <wsdl:port name="Gcd_Port" binding="tns:Gcd_SoapBinding">
+            <soap:address location="http://localhost:8080/soapapi/ws/gcd" />
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

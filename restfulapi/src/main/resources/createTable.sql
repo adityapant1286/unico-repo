@@ -1,0 +1,6 @@
+-- CREATE TABLE `test`.`apimsg` (
+-- `id` INT NOT NULL AUTO_INCREMENT,
+-- `i1` INT NULL,
+-- `i2` INT NULL,
+-- `gcd` INT NULL,
+-- PRIMARY KEY (`id`));

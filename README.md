@@ -27,7 +27,7 @@ Assumptions:
  `gcd` INT NULL,
  PRIMARY KEY (`id`));
 
-3. Build the project using 'mvn claen install' command
+3. Build the project using 'mvn clean install' command
 4. Start Active MQ service
 5. Copy WAR and deploy to a server
 
